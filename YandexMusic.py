@@ -81,47 +81,18 @@ def yandex_music():
     element.click()
 
     while True:
-        input('continue?')
+        sleep(.25)
+        # input('continue?')
+        try:
+            host = driver.find_element(By.CLASS_NAME, 'mdj')
+        except selenium.common.exceptions.NoSuchElementException:
+            continue
+        else:
+            shadowRoot = driver.execute_script("return arguments[0].shadowRoot", host)
+            element = shadowRoot.find_element(By.CSS_SELECTOR,
+                                              'div > div > div.My9Rp0DBP > div.dq7AOa.hF2ft0 > div > div > div:nth-child(1)')
+            driver.execute_script("arguments[0].click();", element)
 
-        # shadow_host = driver.find_element(By.CLASS_NAME, 'mdj')
-        # shadow_root = shadow_host.shadow_root
-        # shadow_content = shadow_root.find_element(By.CLASS_NAME, 'Q87uEBIjuV')
-        # shadow_content.click()
-
-        host = driver.find_element(By.CLASS_NAME, 'mdj')
-        print('ok')
-        # driver.execute_script("return arguments[0].shadowRoot.getElementsByClassName('A4IcEp')[0].click()", host)
-        shadowRoot = driver.execute_script("return arguments[0].shadowRoot", host)
-        element = shadowRoot.find_element(By.CSS_SELECTOR, 'div > div > div.My9Rp0DBP > div.dq7AOa.hF2ft0 > div > div > div:nth-child(1)')
-        print(element)
-        driver.execute_script("arguments[0].click();", element)
-        # element.click()
-
-
-
-        # sleep(.25)
-        # shadow_root.find_element(By.CLASS_NAME, 'dOszY').click()
-        #
-        # # driver.find_element(By.CLASS_NAME, 'U4mmIQOw').click()
-        # sleep(.25)
-        # shadow_root.find_element(By.CLASS_NAME, 'dOszY').click()
-
-        # driver.find_element(By.CLASS_NAME, 'U4mmIQOw').click()
-
-        # while True:
-        #     sleep(.25)
-        #     try:
-        #         shadow_host = driver.find_element(By.CLASS_NAME, 'C7Yd')
-        #     except selenium.common.exceptions.NoSuchElementException:
-        #         pass
-        #     else:
-        #         shadow_root = shadow_host.shadow_root
-        #
-        #         element.click()
-        #         sleep(.25)
-        #         driver.find_element(By.CLASS_NAME, 'iLXh Zqa0uC14Of fRHekJD').click()
-        #         sleep(.25)
-        #         driver.find_element(By.CLASS_NAME, 'U4mmIQOw').click()
 
 if __name__ == '__main__':
     yandex_music()
