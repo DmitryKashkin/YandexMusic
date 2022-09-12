@@ -85,7 +85,6 @@ def yandex_music():
         # input('continue?')
         try:
             host = driver.find_element(By.CLASS_NAME, 'mdj')
-            # host = driver.find_element(By.CSS_SELECTOR, 'body')
         except selenium.common.exceptions.NoSuchElementException:
             pass
         else:
