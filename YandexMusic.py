@@ -85,6 +85,7 @@ def yandex_music():
         # input('continue?')
         try:
             host = driver.find_element(By.CLASS_NAME, 'mdj')
+            # host = driver.find_element(By.CSS_SELECTOR, 'body')
         except selenium.common.exceptions.NoSuchElementException:
             pass
         else:
@@ -99,7 +100,12 @@ def yandex_music():
         except:
             pass
         else:
-            element.click()
+            try:
+                element.click()
+            except selenium.common.exceptions.ElementNotInteractableException:
+                driver.find_element(By.CLASS_NAME, 'rup__content-button').click()
+            else:
+                driver.find_element(By.CLASS_NAME, 'rup__content-button').click()
 
 
 if __name__ == '__main__':
