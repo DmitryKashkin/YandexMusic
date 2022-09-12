@@ -109,5 +109,6 @@ def yandex_music():
                 action.send_keys(Keys.SPACE).perform()
 
 
+
 if __name__ == '__main__':
     yandex_music()
