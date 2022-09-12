@@ -86,12 +86,20 @@ def yandex_music():
         try:
             host = driver.find_element(By.CLASS_NAME, 'mdj')
         except selenium.common.exceptions.NoSuchElementException:
-            continue
+            pass
         else:
             shadowRoot = driver.execute_script("return arguments[0].shadowRoot", host)
             element = shadowRoot.find_element(By.CSS_SELECTOR,
                                               'div > div > div.My9Rp0DBP > div.dq7AOa.hF2ft0 > div > div > div:nth-child(1)')
             driver.execute_script("arguments[0].click();", element)
+
+        try:
+            element = driver.find_element(By.CSS_SELECTOR,
+                                          'body > div.crackdown-popup.popup_compact.local-theme-white.local-icon-theme-white.popup.deco-pane-popup.popup_modal > div > button')
+        except:
+            pass
+        else:
+            element.click()
 
 
 if __name__ == '__main__':
