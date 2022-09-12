@@ -97,15 +97,17 @@ def yandex_music():
         try:
             element = driver.find_element(By.CSS_SELECTOR,
                                           'body > div.crackdown-popup.popup_compact.local-theme-white.local-icon-theme-white.popup.deco-pane-popup.popup_modal > div > button')
-        except:
+        except selenium.common.exceptions.NoSuchElementException:
             pass
         else:
             try:
                 element.click()
             except selenium.common.exceptions.ElementNotInteractableException:
-                driver.find_element(By.CLASS_NAME, 'rup__content-button').click()
+                pass
             else:
-                driver.find_element(By.CLASS_NAME, 'rup__content-button').click()
+                pass
+            finally:
+                action.send_keys(Keys.SPACE).perform()
 
 
 if __name__ == '__main__':
