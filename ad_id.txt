@@ -1,0 +1,6 @@
+div > div > div.My9Rp0DBP > div.dq7AOa.hF2ft0 > div > div > div:nth-child(1)
+div > div > div.gnX7k > div.vDztrI.BXm4adt > div > div > div:nth-child(1) > div
+div > div > div.gnX7k > div.vDztrI.BXm4adt.VgeoT > div > div > div:nth-child(2)
+div > div > div.jeFzo5Fp > div.NtVh.APY9L > div > div > div:nth-child(1)
+div > div > div.FAYlDHengh > div.eiVv.cw1qVFC > div > div > div:nth-child(1)
+div > div > div.FAYlDHengh > div.eiVv.cw1qVFC > div > div > div:nth-child(2)
