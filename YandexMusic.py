@@ -56,6 +56,72 @@ def yandex_music():
         else:
             driver.refresh()
 
+    def main():
+        while True:
+            sleep(.25)
+            # input('continue?')
+            try:
+                # host = driver.find_element(By.CLASS_NAME, 'mdj')
+                host = driver.find_element(By.XPATH,
+                                           '/html/body/div[1]/div[13]/div[1]/div[3]/div[2]/div/div[1]/div/div[2]')
+            except selenium.common.exceptions.NoSuchElementException:
+                pass
+            else:
+                shadowRoot = driver.execute_script("return arguments[0].shadowRoot", host)
+                try:
+                    element = shadowRoot.find_element(By.CSS_SELECTOR,
+                                                      'div > div > div.My9Rp0DBP > div.dq7AOa.hF2ft0 > div > div > div:nth-child(1)')
+                except selenium.common.exceptions.NoSuchElementException:
+                    pass
+                try:
+                    element = shadowRoot.find_element(By.CSS_SELECTOR,
+                                                      'div > div > div.gnX7k > div.vDztrI.BXm4adt > div > div > div:nth-child(1) > div')
+                except selenium.common.exceptions.NoSuchElementException:
+                    pass
+                try:
+                    element = shadowRoot.find_element(By.CSS_SELECTOR,
+                                                      'div > div > div.gnX7k > div.vDztrI.BXm4adt.VgeoT > div > div > div:nth-child(2)')
+                except selenium.common.exceptions.NoSuchElementException:
+                    pass
+                try:
+                    element = shadowRoot.find_element(By.CSS_SELECTOR,
+                                                      'div > div > div.jeFzo5Fp > div.NtVh.APY9L > div > div > div:nth-child(1)')
+                except selenium.common.exceptions.NoSuchElementException:
+                    pass
+                try:
+                    element = shadowRoot.find_element(By.CSS_SELECTOR,
+                                                      'div > div > div.FAYlDHengh > div.eiVv.cw1qVFC > div > div > div:nth-child(1)')
+                except selenium.common.exceptions.NoSuchElementException:
+                    pass
+                try:
+                    element = shadowRoot.find_element(By.CSS_SELECTOR,
+                                                      'div > div > div.FAYlDHengh > div.eiVv.cw1qVFC > div > div > div:nth-child(2)')
+                except selenium.common.exceptions.NoSuchElementException:
+                    pass
+
+                driver.execute_script("arguments[0].click();", element)
+
+            # try:
+            #     element = driver.find_element(By.CSS_SELECTOR,
+            #                                   'body > div.crackdown-popup.popup_compact.local-theme-white.local-icon-theme-white.popup.deco-pane-popup.popup_modal > div > button')
+            # except selenium.common.exceptions.NoSuchElementException:
+            #     pass
+            # else:
+            #     # print('reklama else')
+            #     # try:
+            #     print('reklama click')
+            #     element.click()
+            #     # except selenium.common.exceptions.ElementNotInteractableException:
+            #     #     print ('reclama except')
+            #     #     pass
+            #     # else:
+            #     #     pass
+            #     # finally:
+            #     # action.send_keys(Keys.SPACE).perform()
+            #     print('play')
+            #     sleep(10)
+            #     # return
+
     driver = webdriver.Chrome()
     # shadow = Shadow(driver)
     action = ActionChains(driver)
@@ -63,11 +129,11 @@ def yandex_music():
         'https://music.yandex.ru/home')
     # driver.get(
     #     'https://passport.yandex.ru/auth?origin=music_button-header&retpath=https%3A%2F%2Fmusic.yandex.ru%2Fsettings%3Freqid%3D42336580116627399272688109178242113%26from-passport')
-    sleep(1)
+    sleep(.5)
 
     login()
 
-    sleep(.5)
+    sleep(1)
 
     try:
         element = driver.find_element(By.CLASS_NAME, 'pay-promo-close-btn js-close')
@@ -81,33 +147,7 @@ def yandex_music():
     element.click()
 
     while True:
-        sleep(.25)
-        # input('continue?')
-        try:
-            host = driver.find_element(By.CLASS_NAME, 'mdj')
-        except selenium.common.exceptions.NoSuchElementException:
-            pass
-        else:
-            shadowRoot = driver.execute_script("return arguments[0].shadowRoot", host)
-            element = shadowRoot.find_element(By.CSS_SELECTOR,
-                                              'div > div > div.My9Rp0DBP > div.dq7AOa.hF2ft0 > div > div > div:nth-child(1)')
-            driver.execute_script("arguments[0].click();", element)
-
-        try:
-            element = driver.find_element(By.CSS_SELECTOR,
-                                          'body > div.crackdown-popup.popup_compact.local-theme-white.local-icon-theme-white.popup.deco-pane-popup.popup_modal > div > button')
-        except selenium.common.exceptions.NoSuchElementException:
-            pass
-        else:
-            try:
-                element.click()
-            except selenium.common.exceptions.ElementNotInteractableException:
-                pass
-            else:
-                pass
-            finally:
-                action.send_keys(Keys.SPACE).perform()
-
+        main()
 
 
 if __name__ == '__main__':
