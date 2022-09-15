@@ -7,21 +7,6 @@ from selenium.webdriver.common.by import By
 import pickle
 
 
-def yandex():
-    EXE_PATH = r'chromedriver.exe'
-    driver = webdriver.Chrome()
-    action = ActionChains(driver)
-    driver.get(
-        'https://yandex.ru')
-    sleep(1)
-    element = driver.find_element('id', 'text')
-    element.send_keys('dsfdsfsdf')
-    sleep(1)
-    action.send_keys(Keys.RETURN)
-    action.perform()
-    sleep(100)
-
-
 def yandex_music():
     ad_id = []
     with open('ad_id.txt', 'r') as f:
@@ -84,7 +69,9 @@ def yandex_music():
             else:
                 shadow_root(host, ad_id)
 
-    driver = webdriver.Chrome()
+    # driver = webdriver.Chrome()
+    driver = webdriver.Edge()
+
     action = ActionChains(driver)
     driver.get(
         'https://music.yandex.ru/home')
